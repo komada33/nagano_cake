@@ -6,11 +6,35 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header>
+      <div class="container">
+        <div class="row py-5">
+
+          <div class="col-md-3 text-left">
+            <h1>LOGO</h1>
+          </div>
+
+          <div>
+            <div class="col-md-6 text-right">
+              <div class="row">
+                <ul>About</ul>
+
+                <ul>商品一覧</ul>
+
+                <ul>新規登録</ul>
+
+                <ul>ログイン</ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
     <%= yield %>
   </body>
 </html>
