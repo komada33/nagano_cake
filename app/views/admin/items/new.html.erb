@@ -1,5 +1,5 @@
 <h1>商品新規登録</h1>
-<%= form_with model: admin.items, local:true do |f| %>
+<%= form_with model: @item, local:true do |f| %>
   <table>
     <tr>
       <td>商品画像</td>
@@ -35,3 +35,5 @@
   <div>
     <%= f.submit "新規登録", class: "btn btn-sm btn-secondary" %>
   </div>
+
+  <% end %>
