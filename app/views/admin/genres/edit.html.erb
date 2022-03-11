@@ -1,9 +1,10 @@
 <h1>ジャンル編集</h1>
-
+<%= form_with model: @genre, local:true do |f| %>
 <div>
   <p>ジャンル名</p>
 
-  <p></p>
+  <p><%= f.text_field :name %></p>
 
-  <btn>変更を保存</btn>
+  <%= f.submit "変更を保存", class: "btn btn-sm btn-secondary" %>
 </div>
+<% end %>

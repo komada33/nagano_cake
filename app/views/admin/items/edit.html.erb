@@ -1,29 +1,33 @@
 <h1>商品編集</h1>
-
+<%= form_with model: @item, local:true do |f| %>
   <table>
     <tr>
       <td>商品画像</td>
-      <td></td>
+      <td><%= f.file_field :item_image %></td>
     </tr>
 
     <tr>
       <td>商品名</td>
-      <td></td>
+      <td><%= f.text_field :name %></td>
     </tr>
 
     <tr>
       <td>商品説明</td>
-      <td></td>
+      <td>f, text_area :introduction %></td>
     </tr>
 
     <tr>
       <td>ジャンル</td>
-      <td></td>
+      <td>
+        <div class="field">
+          <%= form_select :genre, {include_blank: '___'} %>
+        </div>
+      </td>
     </tr>
 
     <tr>
       <td>税抜価格</td>
-      <td>円</td>
+      <td><%= f.text_field :price %>円</td>
     </tr>
 
     <tr>
@@ -32,4 +36,8 @@
     </tr>
   </table>
 
-  <btn>変更を保存</btn>
+  <div>
+     <%= f.submit "編集する", class: "btn btn-sm btn-secondary" %>
+  </div>
+
+  <% end %>

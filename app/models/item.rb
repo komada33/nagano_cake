@@ -1,5 +1,6 @@
 class Item < ApplicationRecord
   has_one_attached :item_image
+  has_one :genre
 
   def get_item_image(size)
     unless item_image.attached?
@@ -8,5 +9,9 @@ class Item < ApplicationRecord
     end
     profile_image.variant(resize: size).processed
 
+  end
+
+  def add_tax_price
+    (self.price * 1.10).round
   end
 end

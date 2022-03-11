@@ -25,7 +25,7 @@
 
         <tr>
           <td>税込価格（税抜価格）</td>
-          <td><%= @item.price %></td>
+          <td><%= @item.add_tax_price.to_s(:dalimited) %>（<%= @item.price %>）円</td>
         </tr>
 
         <tr>
