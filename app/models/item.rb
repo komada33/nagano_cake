@@ -1,6 +1,8 @@
 class Item < ApplicationRecord
   has_one_attached :item_image
-  has_one :genre
+  belongs_to :genre
+  has_many :cart_item
+  has_many :order_detail
 
   def get_item_image(size)
     unless item_image.attached?
