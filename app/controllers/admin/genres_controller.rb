@@ -4,13 +4,23 @@ class Admin::GenresController < ApplicationController
     @genres = Genre.all
   end
 
-  def created
+  def create
     @genre = Genre.new(genre_params)
     @genre.save
     redirect_to admin_genres_path
   end
 
   def edit
+    @genre = Genre.find(genre_params)
+  end
+
+  def update
+    @genre = Genre.find(genre_params)
+    if @genre.update
+      redirect_to admin_genres_path
+    else
+      render 'edit'
+    end
   end
 
   private

@@ -1,13 +1,14 @@
 <div class="container mx-auto py-3">
   <h4>配送先編集</h4>
 
+<%= form_with model: @address, method: :patch, local:true do |f| %>
   <div class="row py-3">
-    <p>郵便番号（ハイフンなし）</p>
-    <p>住所</p>
-    <p>宛名</p>
+    <p>郵便番号（ハイフンなし） <%= f.text_field :postal_code %></p>
+    <p>住所 <%= f.text_field :address %></p>
+    <p>宛名 <%= f.text_field :name %></p>
   </div>
 
   <div class="row text-right">
-    <btn>変更内容を保存</btn>
+    <%= f.submit "変更内容を保存", class: "btn btn-sm btn-secondary" %>
   </div>
 </div>
