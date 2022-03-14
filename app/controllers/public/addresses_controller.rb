@@ -10,7 +10,7 @@ class Public::AddressesController < ApplicationController
 
   def create
     @address = Address.new
-    if @address.save
+    if @address.save(address_params)
       redirect_to addresses_path
     else
       render "index"
@@ -31,6 +31,6 @@ class Public::AddressesController < ApplicationController
 
   private
   def address_params
-    params.require(:address_params).permit(:customer_id, :name, :postal_code, :address)
+    params.permit(:customer_id, :name, :postal_code, :address)
   end
 end

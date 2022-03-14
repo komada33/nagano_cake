@@ -8,7 +8,7 @@
 
     <table class="table table-striped">
 
-    <%= @items.each do |item| %>
+    <% @items.each do |item| %>
       <thead>
         <tr>
           <th>商品ID</th>
@@ -22,9 +22,9 @@
       <tbody>
         <tr>
           <th><%= item.id %></th>
-          <th><%= item.name %></th>
+          <th><%= link_to item.name, admin_item_path(item.id) %></th>
           <th><%= item.price %></th>
-          <th></th>
+          <th><%= item.genre.name %></th>
           <th></th>
         </tr>
       </tbody>

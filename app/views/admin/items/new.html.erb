@@ -1,5 +1,5 @@
 <h1>商品新規登録</h1>
-<%= form_with model: @item, local:true do |f| %>
+<%= form_with model: @item, url: admin_items_path, local:true do |f| %>
   <table>
     <tr>
       <td>商品画像</td>
@@ -20,7 +20,9 @@
       <td>ジャンル</td>
       <td>
         <div class="field">
-         <%= f.select :@genre, { include_blank: '___' } %>
+         <%= f.collection_select :genre_id, Genre.all, :id, :name, options = { include_blank: true, selected: "<idの値を動的に指定する>" } %>
+
+
         </div>
       </td>
     </tr>

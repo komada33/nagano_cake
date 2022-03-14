@@ -20,7 +20,7 @@
 
         <tr>
           <td>ジャンル</td>
-          <td></td>
+          <td><%= @item.genre.name %></td>
         </tr>
 
         <tr>
@@ -34,7 +34,9 @@
         </tr>
       </table>
 
-      <btn>編集する</btn>
+    <div>
+      <%= link_to "編集する", edit_admin_item_path(@item.id) %>
+    </div>
     </div>
   </div>
 
