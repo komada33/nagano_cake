@@ -32,7 +32,9 @@
 
     <tr>
       <td>販売ステータス</td>
-      <td></td>
+      <td>
+        <%= f.collection_radio_buttons :is_active, Item.is_actives_i18n, :first , :last %>
+      </td>
     </tr>
   </table>
 

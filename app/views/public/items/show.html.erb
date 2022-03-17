@@ -13,10 +13,17 @@
     </div>
 
     <div class="col-md-5">
-      商品名
-      商品説明
-      ￥
-      <%= f.select :amount, *[1..10] %>   <btn>カートに入れる</btn>
+      <div>商品名<%= @item.name %></div>
+
+      <div>商品説明<%= @item.introduction %></div>
+      <div>￥<%= @item.add_tax_price.to_s(:dalimited) %>（税込）</div>
+
+        <div>
+
+            <%= f.select :amount, *[1..10] %>
+            <%= f.submit "カートに入れる", class: "btn btn-sm btn-secondary" %>
+
+        </div>
     </div>
   </div>
 </div>

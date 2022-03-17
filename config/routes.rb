@@ -11,12 +11,15 @@ Rails.application.routes.draw do
 root 'public/homes#top'
 get "/about" => "public/homes#about", as: "about"
 get "/admin" => "admin/homes#top"
+get "/customers/check" => "public/customers#check", as: "unsubscribe"
+patch "/customers/unsubscribe" => "public/customers#withdrawl", as: "withdrawl"
 
   scope module: :public do
     resources :items
     resources :addresses
     resources :customers
     resources :orders
+    resources :cart_items
   end
 
   namespace :admin do

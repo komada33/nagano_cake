@@ -22,23 +22,28 @@
           <div>
             <div class="col-md-6 text-right">
               <div class="row">
-                <ul><%= link_to "About", about_path %></ul>
 
 
-
+                <% if customer_signed_in? %>
+                <ul><%= link_to "マイページ", customer_path(id: current_customer) %></ul>
                 <ul><%= link_to "商品一覧(カスタマー)", items_path %></ul>
+                <ul>カート</ul>
+                <ul><%= link_to "ログアウト（カスタマー）", destroy_customer_session_path, method: :delete %></ul>
 
+                <% elsif admin_signed_in? %>
                 <ul><%= link_to "商品一覧（アドミン）", admin_items_path %></ul>
-
-                <ul><%= link_to "新規登録", new_customer_registration_path %></ul>
-
-                <ul><%= link_to "ログイン（アドミン）", new_admin_session_path %></ul>
-
+                <ul>会員一覧</ul>
+                <ul>注文履歴一覧</ul>
+                <ul><%= link_to "ジャンル一覧", admin_genres_path %></ul>
                 <ul><%= link_to "ログアウト（アドミン）", destroy_admin_session_path, method: :delete %></ul>
 
+                <% else %>
+                <ul><%= link_to "About", about_path %></ul>
+                <ul><%= link_to "商品一覧(カスタマー)", items_path %></ul>
+                <ul><%= link_to "新規登録", new_customer_registration_path %></ul>
+                <ul><%= link_to "ログイン（アドミン）", new_admin_session_path %></ul>
                 <ul><%= link_to "ログイン（カスタマー）", new_customer_session_path %></ul>
-
-                <ul><%= link_to "ログアウト（カスタマー）", destroy_customer_session_path, method: :delete %></ul>
+                <% end %>
 
 
               </div>

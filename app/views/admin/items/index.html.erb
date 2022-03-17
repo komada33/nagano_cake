@@ -25,8 +25,7 @@
           <th><%= link_to item.name, admin_item_path(item.id) %></th>
           <th><%= item.price %></th>
           <th><%= item.genre.name %></th>
-          <th></th>
-        </tr>
+          <th><%= item.is_active %>
       </tbody>
     </table>
 
