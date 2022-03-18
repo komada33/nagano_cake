@@ -1,23 +1,33 @@
-<h1>会員一覧</h1>
 
-<table>
+<div class="container">
 
-  <thead>
-    <tr>
-      <td>会員ID</td>
-       <td>氏名</td>
-        <td>メールアドレス</td>
-         <td>ステータス</td>
-    </tr>
-  </thead>
-<%= @customers.each do |customer| %>
-  <tbody>
-    <tr>
-       <td><%= customer.id %></td>
-       <td><%= link_to "customer.last_name", admin_customer_path(customer.id) %><%= link_to "customer.first_name", admin_customer_path(customer.id) %></td>
-       <td><%= customer.email %></td>
-       <td>ステータス</td>
-    </tr>
-  </tbody>
-<% end %>
-</table>
+  <div class="row align-items-center my-3 py-3">
+      <h4>会員一覧</h4>
+  </div>
+
+    <table class="table">
+
+
+      <thead class="table-secondary">
+        <tr>
+          <th>会員ID</th>
+          <th>氏名</th>
+          <th>メールアドレス</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+
+ <%= @customers.each do |customer| %>
+      <tbody>
+        <tr>
+          <th><%= customer.id %></th>
+          <th><%= link_to "customer.last_name", admin_customer_path(customer.id) %><%= link_to "customer.first_name", admin_customer_path(customer.id) %></th>
+          <th><%= customer.email %></th>
+          <th><%= item.is_active %>
+      </tbody>
+ <% end %>
+    </table>
+
+
+
+</div>

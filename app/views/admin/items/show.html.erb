@@ -1,43 +1,50 @@
-<h1>商品詳細</h1>
-<div class="container">
+
+<div class="container mx-auto">
+
+  <h4>商品詳細</h4>
+
   <div class="row py-3">
-    <h1>商品詳細</h1>
 
-    <div class="col-md-3">画像</div>
+    <div class="col-md-4"><%= @item.item_image %></div>
 
-    <div class="col-md-9">
-      <table>
+    <div class="col-md-5">
 
-        <tr>
-          <td>商品名</td>
-          <td><%= @item.name %></td>
-        </tr>
+      <div class="row">
+        <div class="col"><p>商品名</p></div>
+        <div class="col"><%= @item.name %></div>
+      </div>
 
-        <tr>
-          <td>商品説明</td>
-          <td><%= @item.introduction %></td>
-        </tr>
+      <div class="row">
+        <div class="col"><p>商品説明</p></div>
+        <div class="col"><%= @item.introduction %></div>
+      </div>
 
-        <tr>
-          <td>ジャンル</td>
-          <td><%= @item.genre.name %></td>
-        </tr>
+      <div class="row">
+        <div class="col"><p>ジャンル</p></div>
+        <div class="col"><%= @item.genre.name %></div>
+      </div>
 
-        <tr>
-          <td>税込価格（税抜価格）</td>
-          <td><%= @item.add_tax_price.to_s(:dalimited) %>（<%= @item.price %>）円</td>
-        </tr>
+      <div class="row">
+        <div class="col">
+          <div class="row">
+            <p>税込価格</p>
+            <p>（税抜価格）</p>
+          </div>
+        </div>
+        <div class="col"><%= @item.add_tax_price.to_s(:dalimited) %>（<%= @item.price %>）円</div>
+      </div>
 
-        <tr>
-          <td>販売ステータス</td>
-          <td><%= @item.is_active %></td>
-        </tr>
-      </table>
+      <div class="row">
+        <div class="col"><p>販売ステータス</p></div>
+        <div class="col"><%= @item.is_active %></div>
+      </div>
 
-    <div>
-      <%= link_to "編集する", edit_admin_item_path(@item.id) %>
+      <div class="text-center">
+        <%= link_to "編集する", edit_admin_item_path(@item.id), class: "btn btn-sm btn-success" %>
+      </div>
     </div>
-    </div>
+
+    <div class="col-md-3"></div>
   </div>
 
 </div>
