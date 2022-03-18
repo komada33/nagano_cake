@@ -11,12 +11,12 @@ class Admin::GenresController < ApplicationController
   end
 
   def edit
-    @genre = Genre.find(genre_params)
+    @genre = Genre.find(params[:id])
   end
 
   def update
-    @genre = Genre.find(genre_params)
-    if @genre.update
+    @genre = Genre.find(params[:id])
+    if @genre.update(genre_params)
       redirect_to admin_genres_path
     else
       render 'edit'
