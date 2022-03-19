@@ -11,46 +11,36 @@
   </head>
 
   <body>
+
     <header>
-      <div class="container">
-        <div class="row py-5">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <h1 class="navbar-brand">LOGO</h1>
 
-          <div class="col-md-3 text-left">
-            <h1>LOGO</h1>
-          </div>
+                <ul class="navbar-nav ml-auto">
+                  <% if customer_signed_in? %>
+                  <li class="pr-3"><%= link_to "マイページ", customer_path(id: current_customer), class: "border border-5 rounded-pill" %></li>
+                  <li class="pr-3"><%= link_to "商品一覧(カスタマー)", items_path, class: "border border-5 rounded-pill"  %></li>
+                  <li class="pr-3">カート</li>
+                  <li class="pr-3"><%= link_to "ログアウト（カスタマー）", destroy_customer_session_path, method: :delete, class: "border border-5 rounded-pill"  %></li>
 
-          <div>
-            <div class="col-md-6 text-right">
-              <div class="row">
+                  <% elsif admin_signed_in? %>
+                  <li class="pr-3"><%= link_to "商品一覧（アドミン）", admin_items_path, class: "border border-5 rounded-pill"  %></li>
+                  <li class="pr-3"><%= link_to "会員一覧", admin_customers_path, class: "border border-5 rounded-pill"  %></li>
+                  <li class="pr-3">注文履歴一覧</li>
+                  <li class="pr-3"><%= link_to "ジャンル一覧", admin_genres_path, class: "border border-5 rounded-pill"  %></li>
+                  <li class="pr-3"><%= link_to "ログアウト（アドミン）", destroy_admin_session_path, method: :delete, class: "border border-5 rounded-pill"  %></li>
 
-
-                <% if customer_signed_in? %>
-                <ul><%= link_to "マイページ", customer_path(id: current_customer) %></ul>
-                <ul><%= link_to "商品一覧(カスタマー)", items_path %></ul>
-                <ul>カート</ul>
-                <ul><%= link_to "ログアウト（カスタマー）", destroy_customer_session_path, method: :delete %></ul>
-
-                <% elsif admin_signed_in? %>
-                <ul><%= link_to "商品一覧（アドミン）", admin_items_path %></ul>
-                <ul>会員一覧</ul>
-                <ul>注文履歴一覧</ul>
-                <ul><%= link_to "ジャンル一覧", admin_genres_path %></ul>
-                <ul><%= link_to "ログアウト（アドミン）", destroy_admin_session_path, method: :delete %></ul>
-
-                <% else %>
-                <ul><%= link_to "About", about_path %></ul>
-                <ul><%= link_to "商品一覧(カスタマー)", items_path %></ul>
-                <ul><%= link_to "新規登録", new_customer_registration_path %></ul>
-                <ul><%= link_to "ログイン（アドミン）", new_admin_session_path %></ul>
-                <ul><%= link_to "ログイン（カスタマー）", new_customer_session_path %></ul>
-                <% end %>
-
-
-              </div>
+                  <% else %>
+                  <li class="pr-3"><%= link_to "About", about_path, class: "border border-5 rounded-pill"  %></li>
+                  <li class="pr-3"><%= link_to "商品一覧(カスタマー)", items_path, class: "border border-5 rounded-pill" %></li>
+                  <li class="pr-3"><%= link_to "新規登録", new_customer_registration_path, class: "border border-5 rounded-pill"  %></li>
+                  <li class="pr-3"><%= link_to "ログイン（アドミン）", new_admin_session_path, class: "border border-5 rounded-pill"  %></li>
+                  <li class="pr-3"><%= link_to "ログイン（カスタマー）", new_customer_session_path, class: "border border-5 rounded-pill"  %></li>
+                  <% end %>
+                </ul>
             </div>
-          </div>
-        </div>
-      </div>
+      </nav>
     </header>
     <%= yield %>
   </body>

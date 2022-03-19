@@ -17,13 +17,13 @@
         </tr>
       </thead>
 
- <%= @customers.each do |customer| %>
+ <% @customers.each do |customer| %>
       <tbody>
         <tr>
           <th><%= customer.id %></th>
           <th><%= link_to "customer.last_name", admin_customer_path(customer.id) %><%= link_to "customer.first_name", admin_customer_path(customer.id) %></th>
           <th><%= customer.email %></th>
-          <th><%= item.is_active %>
+          <th>ステータス</th>
       </tbody>
  <% end %>
     </table>
