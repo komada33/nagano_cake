@@ -21,7 +21,7 @@
                   <% if customer_signed_in? %>
                   <li class="pr-3"><%= link_to "マイページ", customer_path(id: current_customer), class: "border border-5 rounded-pill" %></li>
                   <li class="pr-3"><%= link_to "商品一覧(カスタマー)", items_path, class: "border border-5 rounded-pill"  %></li>
-                  <li class="pr-3">カート</li>
+                  <li class="pr-3"><%= link_to "カート", cart_items_path(id: current_customer), class: "border border-5 rounded-pill" %></li>
                   <li class="pr-3"><%= link_to "ログアウト（カスタマー）", destroy_customer_session_path, method: :delete, class: "border border-5 rounded-pill"  %></li>
 
                   <% elsif admin_signed_in? %>

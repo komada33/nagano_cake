@@ -1,7 +1,7 @@
 class Item < ApplicationRecord
   has_one_attached :item_image
   belongs_to :genre
-  has_many :cart_items
+  has_many :cart_items, through: :customers, source: :cart_item
   has_many :order_details
 
   def get_item_image(width, height)
@@ -14,7 +14,7 @@ class Item < ApplicationRecord
   end
 
   def add_tax_price
-    (self.price * 1.10).round
+    (price * 1.10).floor
   end
 
   enum is_active: {stop: false, buy: true}

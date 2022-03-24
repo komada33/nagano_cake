@@ -1,16 +1,16 @@
 <div class="container-py-3　mx-auto">
 
   <div class="row">
-   <div class="col-md-6 text-left">ショッピングカート</div>
+   <div class="col">ショッピングカート</div>
 
-    <div class="col-md-6 text-right">
+    <div class="col">
       <btn>
-        カートを空にする
+        <%= link_to "カートを空にする", cart_items_path, class: "btn btn-sm btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %>
       </btn>
     </div>
   </div>
 
-  <div class="row">
+  <div class="row mx-auto">
     <table>
       <thead>
         <td>商品名</td>
@@ -20,25 +20,33 @@
         <td></td>
       </thead>
 
-<%= @cart_items.each do |cart_item| %>
+<% @cart_items.each do |cart_item| %>
       <tbody>
-        <td><%= cart_item.item_id.name %></td>
-        <td><%= cart_item.item_id.price %></td>
-        <td><%= cart_item.item_id.amount %><btn>変更</btn></td>
-        <td>小計</td>
-        <td><btn>削除</btn></td>
+        <td><%= cart_item.item.name %></td>
+        <td><%= cart_item.item.add_tax_price.to_s(:dalimited) %></td>
+        <td>
+            <%= form_with model: @item, url: cart_items_path, method: :patch, local:true do |f| %>
+              <%= f.select :amount, *[1..10], selected: cart_item.amount %>
+              <%= f.hidden_field :item_id, :value => @item %>
+              <%= f.submit "変更", class: "btn btn-sm btn-secondary" %>
+            <% end %>
+        </td>
+        <td><%= cart_item.subtotal %></td>
+        <td><%= link_to "削除", cart_items_path, class: "btn btn-sm btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
       </tbody>
 <% end %>
     </table>
   </div>
 
   <div class="row">
-    <div class="col-md-6 text-left">
-      <btn>買い物を続ける</btn>
+    <div class="col">
+      <btn><%= link_to "買い物を続ける", items_path %></btn>
     </div>
 
-    <div class="col-md-6 text-right">
+    <div class="col">
+
       合計金額￥
+
     </div>
   </div>
 
