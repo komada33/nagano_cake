@@ -25,14 +25,14 @@
         <td><%= cart_item.item.name %></td>
         <td><%= cart_item.item.add_tax_price.to_s(:dalimited) %></td>
         <td>
-            <%= form_with model: @item, url: cart_items_path, method: :patch, local:true do |f| %>
+            <%= form_with model: cart_item, url: cart_item_path(cart_item), method: :patch, local:true do |f| %>
               <%= f.select :amount, *[1..10], selected: cart_item.amount %>
-              <%= f.hidden_field :item_id, :value => @item %>
+              <%= f.hidden_field :item_id, :value => cart_item.id %>
               <%= f.submit "変更", class: "btn btn-sm btn-secondary" %>
             <% end %>
         </td>
         <td><%= cart_item.subtotal %></td>
-        <td><%= link_to "削除", cart_items_path, class: "btn btn-sm btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+        <td><%= link_to "削除", cart_item_path(cart_item), class: "btn btn-sm btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
       </tbody>
 <% end %>
     </table>
@@ -50,7 +50,7 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row mx-auto">
     <btn>情報入力に進む</btn>
   </div>
 </div>

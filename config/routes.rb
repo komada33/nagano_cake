@@ -18,8 +18,8 @@ patch "/customers/unsubscribe" => "public/customers#withdrawl", as: "withdrawl"
     resources :items
     resources :addresses
     resources :customers
-    resources :orders
-    resources :cart_items
+    resources :orders, only: [:new, :ready, :thanks, :create, :index, :show]
+    resources :cart_items, only: [:index, :create, :update, :destroy]
   end
 
   namespace :admin do
