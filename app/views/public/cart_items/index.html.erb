@@ -5,7 +5,7 @@
 
     <div class="col">
       <btn>
-        <%= link_to "カートを空にする", cart_items_path, class: "btn btn-sm btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %>
+        <%= link_to "カートを空にする", cart_items_destroy_all_path, class: "btn btn-sm btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %>
       </btn>
     </div>
   </div>
@@ -31,7 +31,7 @@
               <%= f.submit "変更", class: "btn btn-sm btn-secondary" %>
             <% end %>
         </td>
-        <td><%= cart_item.subtotal %></td>
+        <td><%= cart_item.item.add_tax_price %></td>
         <td><%= link_to "削除", cart_item_path(cart_item), class: "btn btn-sm btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
       </tbody>
 <% end %>
@@ -45,7 +45,7 @@
 
     <div class="col">
 
-      合計金額￥
+      合計金額<%= @subtotal.round.to_s %>￥
 
     </div>
   </div>
