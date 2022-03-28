@@ -18,6 +18,7 @@ patch "/customers/unsubscribe" => "public/customers#withdrawl", as: "withdrawl"
     resources :items
     resources :addresses
     resources :customers
+    post "/orders/ready" => "orders#ready", as: "orders_ready"
     resources :orders, only: [:new, :ready, :thanks, :create, :index, :show]
     delete "/cart_items/destroy_all" => "cart_items#destroy_all", as: "cart_items_destroy_all"
     resources :cart_items, only: [:index, :create, :update, :destroy]

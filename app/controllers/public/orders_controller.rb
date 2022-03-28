@@ -1,21 +1,38 @@
 class Public::OrdersController < ApplicationController
-  def confirm
+  def ready
     @order = Order.new(order_params)
     @address = Address.find(params[:order][:address_id])
-    @order.postal_code = @address.postal_code
-    @order.address = @address.address
-    @order.name = @address.name
+    if @order.save
+      @order.postal_code = current_customer.postal_code
+      @order.address = current_customer.address
+      @order.name = current_customer.first_name + current_customer.last_name
+    elsif @order.save
+      @addresses = @order.address_id
+      @order.postal_code = @address.postal_code
+      @order.address = @address.address
+      @order.name = @address.name
+    else @order.save
+      @address = Address.new
+      @order.postal_code = @address.postal_code
+      @order.address = @address.address
+      @order.name = @address.name
+    end
   end
 
   def new
+    @order.postal_code = current_customer.postal_code
+    @order.address = current_customer.address
+    @order.name = current_customer.first_name + current_customer.last_name
+    @addresses = @order.address_id
+    @order.postal_code = @address.postal_code
+    @order.address = @address.address
+    @order.name = @address.name
+    @address = Address.new
   end
 
   def create
     @order = Order.new(order_params)
     @order.customers_id = current_customer.id
-  end
-
-  def ready
   end
 
   def thanks
